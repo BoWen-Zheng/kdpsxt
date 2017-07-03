@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.orilore.mappers.WmddMapper">
+	<resultMap type="Wmdd" id="wmddResultMap">
+		<id column="id" property="id"/>
+		<result column="yhid" property="yhid"/>
+		<result column="sjid" property="sjid"/>
+		<result column="jg" property="jg"/>
+		<result column="zt" property="zt"/>
+	</resultMap>
+	 <resultMap type="Wmdd" id="wmddMap">
+		<id column="id" property="id"/>
+		<result column="yhid" property="yhid"/>
+		<result column="jg" property="jg"/>
+		<result column="zt" property="zt"/>
+		<result column="sjid" property="sjid"/>
+		<association property="sj" javaType="com.orilore.model.Sj">
+			<id column="bid" property="id"/>
+			<result column="sjmc" property="sjmc"/>
+		</association>
+	</resultMap>
+	<select id="selectOne" parameterType="int" resultType="Wmdd">
+		select * from wmdd where id=#{id}
+	</select>
+	<select id="selectwmdd" parameterType="int" resultMap="wmddMap">
+		select a.jg,a.id,a.yhid,b.id as bid,b.sjmc from wmdd a,sj b where a.sjid=b.id and yhid=#{yhid}
+	</select>
+	<select id="select" resultMap="wmddResultMap">
+		select * from wmdd
+	</select>
+	<insert id="insert" parameterType="Wmdd" useGeneratedKeys="true" keyProperty="id">
+		insert into wmdd(yhid,sjid,jg,zt) values(#{yhid},#{sjid},#{jg},#{zt})
+	</insert>
+	<delete id="delete" parameterType="int">
+		delete from wmdd where id=#{id}
+	</delete>
+	<update id="update" parameterType="Wmdd">
+		update wmdd set yhid=#{yhid},sjid=#{sjid},jg=#{jg},zt=#{zt} where id=#{id}
+	</update>
+</mapper>

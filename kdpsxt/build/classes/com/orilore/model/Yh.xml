@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.orilore.mappers.YhMapper">
+	<resultMap type="Yh" id="yhResultMap">
+		<id column="id" property="id"/>
+		<result column="yhm" property="yhm"/>
+		<result column="mm" property="mm"/>
+		<result column="wddz" property="wddz"/>
+		<result column="wddh" property="wddh"/>
+		<result column="xx" property="xx"/>
+		<result column="tx" property="tx"/>
+	</resultMap>
+	<select id="selectOne" parameterType="int" resultType="Yh">
+		select * from yh where id=#{id}
+	</select>
+	<select id="selectdl" parameterType="map" resultType="Yh">
+		select * from yh where yhm=#{yhm} and mm=#{mm}
+	</select>
+	<select id="selectbyyhm" parameterType="map" resultType="Yh">
+		select * from yh 
+		<if test="yhm!=null and yhm!=''">
+		where yhm like #{yhm}
+		</if>	
+		limit #{begin},#{page}
+	</select>
+	<select id="selectcount" parameterType="map" resultType="int">
+		select count(*) from yh 
+		<if test="yhm!=null and yhm!=''">
+		where yhm like #{yhm}
+		</if>	
+	</select>
+	<select id="select" resultMap="yhResultMap">
+		select * from yh
+	</select>
+	<insert id="insert" parameterType="Yh">
+		insert into yh(yhm,mm,wddz,wddh,xx,tx) values(#{yhm},#{mm},#{wddz},#{wddh},#{xx},#{tx})
+	</insert>
+	<delete id="delete" parameterType="int">
+		delete from yh where id=#{id}
+	</delete>
+	<update id="update" parameterType="Yh">
+		update yh set yhm=#{yhm},mm=#{mm},wddz=#{wddz},wddh=#{wddh},xx=#{xx},tx=#{tx} where id=#{id}
+	</update>
+</mapper>

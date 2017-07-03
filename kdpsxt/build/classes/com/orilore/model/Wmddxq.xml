@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.orilore.mappers.WmddxqMapper">
+	<resultMap type="Wmddxq" id="wmddxqResultMap">
+		<id column="id" property="id"/>
+		<result column="spid" property="spid"/>
+		<result column="spsl" property="spsl"/>
+		<result column="wmddid" property="wmddid"/>
+	</resultMap>
+	<select id="selectOne" parameterType="int" resultType="Wmddxq">
+		select * from wmddxq where id=#{id}
+	</select>
+	<select id="select" resultMap="wmddxqResultMap">
+		select * from wmddxq
+	</select>
+	<insert id="insert" parameterType="Wmddxq">
+		insert into wmddxq(spid,spsl,wmddid) values(#{spid},#{spsl},#{wmddid})
+	</insert>
+	<delete id="delete" parameterType="int">
+		delete from wmddxq where id=#{id}
+	</delete>
+	<update id="update" parameterType="Wmddxq">
+		update wmddxq set spid=#{spid},spsl=#{spsl},wmddid=#{wmddid} where id=#{id}
+	</update>
+</mapper>

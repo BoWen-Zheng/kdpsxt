@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.orilore.mappers.SjMapper">
+	<resultMap type="Sj" id="sjResultMap">
+		<id column="id" property="id"/>
+		<result column="sjmc" property="sjmc"/>
+		<result column="sjdz" property="sjdz"/>
+		<result column="sjdh" property="sjdh"/>
+		<result column="pssj" property="pssj"/>
+		<result column="xq" property="xq"/>
+		<result column="tp" property="tp"/>
+		<result column="psfs" property="psfs"/>
+		<result column="qsjg" property="qsjg"/>
+		<result column="rjjg" property="rjjg"/>
+	</resultMap>
+	<select id="selectOne" parameterType="int" resultType="Sj">
+		select * from sj where id=#{id}
+	</select>
+	<select id="select" resultType="Sj">
+		select * from sj 
+	</select>
+	<select id="selectforpage" parameterType="map" resultMap="sjResultMap">
+		select * from sj limit #{begin},#{page}
+	</select>
+	<select id="selectcount" resultType="int">
+		select count(*) from sj
+	</select>
+	<insert id="insert" parameterType="Sj">
+		insert into sj(sjmc,sjdz,sjdh,pssj,xq,tp,psfs,qsjg,rjjg) values(#{sjmc},#{sjdz},#{sjdh},#{pssj},#{xq},#{tp},#{psfs},#{qsjg},#{rjjg})
+	</insert>
+	<delete id="delete" parameterType="int">
+		delete from sj where id=#{id}
+	</delete>
+	<update id="update" parameterType="Sj">
+		update sj set sjmc=#{sjmc},sjdz=#{sjdz},sjdh=#{sjdh},pssj=#{pssj},xq=#{xq},tp=#{tp},psfs=#{psfs},qsjg=#{qsjg},rjjg=#{rjjg} where id=#{id}
+	</update>
+</mapper>

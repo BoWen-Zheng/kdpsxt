@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.orilore.mappers.SpMapper">
+	<resultMap type="Sp" id="spResultMap">
+		<id column="id" property="id"/>
+		<result column="spmc" property="spmc"/>
+		<result column="spxq" property="spxq"/>
+		<result column="spjg" property="spjg"/>
+		<result column="tp" property="tp"/>
+		<result column="sjid" property="sjid"/>
+	</resultMap>
+	<resultMap type="Sp" id="resultmap">
+		<id column="spid" property="id"/>
+		<result column="spmc" property="spmc"/>
+		<result column="spxq" property="spxq"/>
+		<result column="spjg" property="spjg"/>
+		<result column="sptp" property="tp"/>
+		<association property="sj" javaType="com.orilore.model.Sj">
+			<id column="sjid" property="id"/>
+			<result column="sjmc" property="sjmc"/>
+		</association>
+	</resultMap>
+	<select id="selectOne" parameterType="int" resultMap="spResultMap">
+		select * from sp where id=#{id}
+	</select>
+	<select id="selectbymap" parameterType="map" resultMap="resultmap">
+		select a.id as spid,a.spmc,a.spxq,a.spjg,a.tp as sptp,b.id as sjid,b.sjmc from sp a,sj b where a.sjid=b.id 
+		<if test="spmc!=mull and spmc!=''">
+		and spmc=#{spmc}
+		</if>
+		<if test="beginjg!=null and beginjg!=''">
+		and spjg&lt;=#{beginjg}
+		</if>
+		<if test="endjg!=null and endjg!=''">
+		and spjg&lt;=#{endjg}
+		</if>
+		<if test="sjid!=0 and sjid!=null and sjid!=''">
+		and sjid=#{sjid}
+		</if>
+		limit #{begin},#{page}
+	</select> 
+	<select id="selectcount" parameterType="map" resultType="int">
+		select count(*) from sp a,sj b where a.sjid=b.id 
+		<if test="spmc!=mull and spmc!=''">
+		and spmc=#{spmc}
+		</if>
+		<if test="beginjg!=null and beginjg!=''">
+		and spjg&lt;=#{beginjg}
+		</if>
+		<if test="endjg!=null and endjg!=''">
+		and spjg&lt;=#{endjg}
+		</if>
+		<if test="sjid!=0 and sjid!=null">
+		and sjid=#{sjid}
+		</if>
+	</select>
+	<select id="select" resultType="Sp">
+		select * from sp
+	</select>
+	<select id="selectbysj" parameterType="int" resultType="Sp">
+		select * from sp where sjid=#{sjid}
+	</select>
+	<insert id="insert" parameterType="Sp">
+		insert into sp(spmc,spxq,spjg,tp,sjid) values(#{spmc},#{spxq},#{spjg},#{tp},#{sjid})
+	</insert>
+	<delete id="delete" parameterType="int">
+		delete from sp where id=#{id}
+	</delete>
+	<update id="update" parameterType="Sp">
+		update sp set spmc=#{spmc},spxq=#{spxq},spjg=#{spjg},tp=#{tp},sjid=#{sjid} where id=#{id}
+	</update>
+</mapper>

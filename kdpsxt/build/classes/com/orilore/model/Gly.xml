@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.orilore.mappers.GlyMapper">
+	<resultMap type="Gly" id="glyResultMap">
+		<id column="id" property="id"/>
+		<result column="yhm" property="yhm"/>
+		<result column="mm" property="mm"/>
+	</resultMap>
+	<select id="selectOne" parameterType="int" resultType="Gly">
+		select * from gly where id=#{id}
+	</select>
+	<select id="selectlogin" parameterType="map" resultType="Gly">
+		select * from gly where yhm=#{yhm} and mm=#{mm}
+	</select>
+	<select id="select" resultMap="glyResultMap">
+		select * from gly
+	</select>
+	<insert id="insert" parameterType="Gly">
+		insert into gly(yhm,mm) values(#{yhm},#{mm})
+	</insert>
+	<delete id="delete" parameterType="int">
+		delete from gly where id=#{id}
+	</delete>
+	<update id="update" parameterType="Gly">
+		update gly set yhm=#{yhm},mm=#{mm} where id=#{id}
+	</update>
+</mapper>

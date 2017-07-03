@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias alias="Gly" type="com.orilore.model.Gly"/>
+		<typeAlias alias="Ksdd" type="com.orilore.model.Ksdd"/>
+		<typeAlias alias="Shy" type="com.orilore.model.Shy"/>
+		<typeAlias alias="Sj" type="com.orilore.model.Sj"/>
+		<typeAlias alias="Sp" type="com.orilore.model.Sp"/>
+		<typeAlias alias="Wmdd" type="com.orilore.model.Wmdd"/>
+		<typeAlias alias="Wmddxq" type="com.orilore.model.Wmddxq"/>
+		<typeAlias alias="Yh" type="com.orilore.model.Yh"/>
+		<typeAlias alias="Yh_sj" type="com.orilore.model.Yh_sj"/>
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+		<transactionManager type="JDBC"/>
+		<dataSource type="POOLED">
+			<property name="driver" value="com.mysql.jdbc.Driver"/>
+			<property name="url" value="jdbc:mysql://127.0.0.1:3306/kdpsxt" />
+			<property name="username" value="root"/>
+			<property name="password" value="root"/>
+		</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="com/orilore/model/Gly.xml"/>
+		<mapper resource="com/orilore/model/Ksdd.xml"/>
+		<mapper resource="com/orilore/model/Shy.xml"/>
+		<mapper resource="com/orilore/model/Sj.xml"/>
+		<mapper resource="com/orilore/model/Sp.xml"/>
+		<mapper resource="com/orilore/model/Wmdd.xml"/>
+		<mapper resource="com/orilore/model/Wmddxq.xml"/>
+		<mapper resource="com/orilore/model/Yh.xml"/>
+		<mapper resource="com/orilore/model/Yh_sj.xml"/>
+	</mappers>
+</configuration>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.orilore.mappers.KsddMapper">
+	<resultMap type="Ksdd" id="ksddResultMap">
+		<id column="id" property="id"/>
+		<result column="cfdz" property="cfdz"/>
+		<result column="shdz" property="shdz"/>
+		<result column="yhid" property="yhid"/>
+		<result column="shyid" property="shyid"/>
+		<result column="zl" property="zl"/>
+		<result column="xq" property="xq"/>
+		<result column="wpzl" property="wpzl"/>
+		<result column="jg" property="jg"/>
+		<result column="kdgs" property="kdgs"/>
+		<result column="ddh" property="ddh"/>
+		<result column="zt" property="zt"/>
+	</resultMap>
+	<select id="selectOne" parameterType="int" resultType="Ksdd">
+		select * from ksdd where id=#{id}
+	</select>
+	<select id="selectbyyhid" parameterType="int" resultMap="ksddResultMap">
+		select * from ksdd where yhid=#{yhid}
+	</select>
+	<select id="select" resultMap="ksddResultMap">
+		select * from ksdd
+	</select>
+	<insert id="insert" parameterType="Ksdd" useGeneratedKeys="true" keyProperty="id">
+		insert into ksdd(cfdz,shdz,yhid,shyid,zl,xq,wpzl,jg,kdgs,ddh,zt) values(#{cfdz},#{shdz},#{yhid},#{shyid},#{zl},#{xq},#{wpzl},#{jg},#{kdgs},#{ddh},#{zt})
+	</insert>
+	<delete id="delete" parameterType="int">
+		delete from ksdd where id=#{id}
+	</delete>
+	<update id="update" parameterType="Ksdd">
+		update ksdd set cfdz=#{cfdz},shdz=#{shdz},yhid=#{yhid},shyid=#{shyid},zl=#{zl},xq=#{xq},wpzl=#{wpzl},jg=#{jg},kdgs=#{kdgs},ddh=#{ddh},zt=#{zt} where id=#{id}
+	</update>
+</mapper>

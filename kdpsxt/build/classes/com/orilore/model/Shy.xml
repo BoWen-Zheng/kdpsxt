@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.orilore.mappers.ShyMapper">
+	<resultMap type="Shy" id="shyResultMap">
+		<id column="id" property="id"/>
+		<result column="xm" property="xm"/>
+		<result column="dh" property="dh"/>
+		<result column="szxx" property="szxx"/>
+		<result column="zt" property="zt"/>
+	</resultMap>
+	<select id="selectOne" parameterType="int" resultType="Shy">
+		select * from shy where id=#{id}
+	</select>
+	<select id="select" resultMap="shyResultMap">
+		select * from shy
+	</select>
+	<select id="selectbyzt" parameterType="map" resultMap="shyResultMap">
+		select * from shy where szxx=#{szxx} and zt=#{zt}
+	</select>
+	<select id="selectforpage" parameterType="map" resultMap="shyResultMap">
+		select * from shy
+		<if test="xm!=null and xm!=''">
+		where xm like #{xm}
+		</if>
+		limit #{begin},#{page}
+	</select>
+	<select id="selectcount" parameterType="map" resultType="int">
+		select count(*) from shy
+		<if test="xm!=null and xm!=''">
+		where xm like #{xm}
+		</if>
+	</select>
+	<insert id="insert" parameterType="Shy">
+		insert into shy(xm,dh,szxx,zt) values(#{xm},#{dh},#{szxx},#{zt})
+	</insert>
+	<delete id="delete" parameterType="int">
+		delete from shy where id=#{id}
+	</delete>
+	<update id="update" parameterType="Shy">
+		update shy set xm=#{xm},dh=#{dh},szxx=#{szxx},zt=#{zt} where id=#{id}
+	</update>
+</mapper>

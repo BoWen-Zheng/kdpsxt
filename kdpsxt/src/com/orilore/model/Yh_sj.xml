@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.orilore.mappers.Yh_sjMapper">
+	<resultMap type="Yh_sj" id="yh_sjResultMap">
+		<id column="id" property="id"/>
+		<result column="yhid" property="yhid"/>
+		<result column="sjid" property="sjid"/>
+		<result column="pj" property="pj"/>
+	</resultMap>
+	<select id="selectOne" parameterType="int" resultType="Yh_sj">
+		select * from yh_sj where id=#{id}
+	</select>
+	<select id="select" resultMap="yh_sjResultMap">
+		select * from yh_sj
+	</select>
+	<select id="selectbysj" parameterType="int" resultMap="yh_sjResultMap">
+		select * from yh_sj where sjid=#{sjid}
+	</select>
+	<insert id="insert" parameterType="Yh_sj">
+		insert into yh_sj(yhid,sjid,pj) values(#{yhid},#{sjid},#{pj})
+	</insert>
+	<delete id="delete" parameterType="int">
+		delete from yh_sj where id=#{id}
+	</delete>
+	<update id="update" parameterType="Yh_sj">
+		update yh_sj set yhid=#{yhid},sjid=#{sjid},pj=#{pj} where id=#{id}
+	</update>
+</mapper>
