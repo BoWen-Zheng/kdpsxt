@@ -1,0 +1,41 @@
+<ion-view view-title="确认订单" hide-tabs="true">
+<ion-content>
+	<ion-list>
+		<ion-item>
+			<h3>发货地址:<span>{{jjrcs}}{{jjrdz}}</span></h3>
+		</ion-item>
+		<ion-item>
+			<h3>寄件人姓名:<span>{{jjrxm}}</span></h3>
+		</ion-item>
+		<ion-item>
+			<h3>收货人电话:<span>{{jjrdh}}</span></h3>
+		</ion-item>
+		<ion-item>
+			<h3>收货地址:<span>{{sjrcs}}{{sjrdz}}</span></h3>
+		</ion-item>
+		<ion-item>
+			<h3>收货人姓名:<span>{{sjrxm}}</span></h3>
+		</ion-item>
+		<ion-item>
+			<h3>收货人电话:<span>{{sjrdh}}</span></h3>
+		</ion-item>
+		<ion-item>
+			<h3>配送员:<span>{{shyxm}}</span></h3>
+		</ion-item>
+		<ion-item>
+			<h3>物品种类:<span>{{wpzl}}</span></h3>
+		</ion-item>
+		<ion-item>
+			<h3>物品重量:<span>{{wpzl}}</span></h3>
+		</ion-item>
+		<ion-item>
+			<h3>快递公司:<span>{{kdgs}}</span></h3>
+		</ion-item>
+		<ion-item>
+			<h3 style="float:right">价格:<span class="assertive">${{jg}}</span></h3>
+		</ion-item>
+	</ion-list> 
+
+	<button class="button button-assertive button-block" ng-click="tijiao()">付款</button>
+</ion-content>
+</ion-view>

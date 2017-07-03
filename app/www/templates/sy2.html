@@ -1,0 +1,29 @@
+<ion-view view-title="首页">
+
+	<ion-content class="has-tabs">
+		<div class="list list-inset">
+
+		   	 <label class="item item-input">
+			    <span class="input-label">快递公司</span>
+			    <h2>顺丰快递</h2>
+			  </label>
+			  <label class="item item-input">
+			    <span class="input-label">订单号</span>
+			    <h2>1234567890</h2>
+			  </label>
+		   	  <div class="item" ng-repeat="item in items">
+		   	  	<div class="icon icon-left ion-ios-paperplane-outline"><h2>{{item.AcceptTime}}</h2><h2>{{item.AcceptStation}}</h2></div>
+		   	  	
+		   	  
+			  <div class="item">
+			  	 <div class="button button-assertive" style="width:50%">未收货</div>
+			  	 <div class="button button-balanced" style="width:50%">已收货</div>
+			  </div>
+		</div>
+		
+		
+
+	</ion-content>
+
+
+</ion-view>

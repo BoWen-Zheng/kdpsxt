@@ -1,0 +1,70 @@
+<ion-view view-title="首页">
+
+		<ion-content class="has-tabs">
+		<ion-list>	
+
+		  <ionic-pick-city options='CityPickData1' address='address1'></ionic-pick-city>
+		  <label class="item item-input">
+		  	
+		    <input type="text" placeholder="请填写寄件人地址" ng-model="jjrdz">
+		  </label>
+
+			<label class="item item-input">
+		   
+		    <input type="text" placeholder="请填写寄件人姓名" ng-model="jjrxm">
+		  </label>
+		  <label class="item item-input">
+		   
+		    <input type="text" placeholder="请填写寄件人电话" ng-model="jjrdh">
+		  </label>
+		 <ionic-pick-city options='CityPickData2' address='address2'></ionic-pick-city>
+		  <label class="item item-input">
+		   
+		    <input type="text" placeholder="请填写收件人地址" ng-model="sjrdz">
+		  </label>
+		  
+		 <label class="item item-input">
+		   
+		    <input type="text" placeholder="请填写收件人姓名" ng-model="sjrxm">
+		  </label>
+			<label class="item item-input">
+		   
+		    <input type="text" placeholder="请填写收件人电话" ng-model="sjrdh">
+		  </label>
+  			<label class="item item-input item-select">
+ 				<div class="input-label">
+      				物品类型
+    			</div>
+    			<select ng-model="wplx">
+    				<option selected>--请选择--</option>
+      				<option>文件</option>
+      				<option>包裹</option>
+      				
+    			</select>
+  			</label>
+  			<label class="item item-input item-select">
+ 				<div class="input-label">
+      				快递公司
+    			</div>
+    			<select ng-model="kdgs">
+    				<option selected>--请选择--</option>
+      				<option>顺丰快递</option>
+      				<option>中通快递</option>
+      				<option>圆通快递</option>
+    			</select>
+  			</label>
+			<label class="item item-input">
+			    <span class="input-label">物品重量</span>
+			    <input type="text" ng-model="wpzl">
+			</label>
+			  
+			
+			<label class="item item-input">
+		   		<textarea placeholder="备注" ng-model="bz"></textarea>
+		  	</label>
+			
+			<div class="button button-positive button-block" ui-sref="home.v1.zrxq({jjrdz:jjrdz,sjrdz:sjrdz,wplx:wplx,kdgs:kdgs,wpzl:wpzl,bz:bz,jjrcs:address1,sjrcs:address2,jjrxm:jjrxm,sjrxm:sjrxm,jjrdh:jjrdh,sjrdh:sjrdh})">呼叫专人</div>
+		</ion-list>
+		</ion-content>
+
+</ion-view>

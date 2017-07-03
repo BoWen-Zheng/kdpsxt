@@ -1,0 +1,10 @@
+<ion-view view-title="外卖订单" hide-tabs="true">
+<ion-content>
+	<ion-list>
+		<ion-item ng-repeat="item in items">
+			<h3>商家：{{item.sj.sjmc}}<span style="float:right;color:red;">￥{{item.jg}}</span></h3>
+		</ion-item>
+		
+	</ion-list> 
+</ion-content>
+</ion-view>

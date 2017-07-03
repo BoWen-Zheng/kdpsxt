@@ -1,0 +1,33 @@
+<ion-view view-title="外卖" >
+	<ion-nav-buttons side="right">
+	   <div class="button button-clear" ng-click="showFilterBar()">
+
+	      <i class="icon ion-search"></i>
+
+	   </div>
+
+
+	 </ion-nav-buttons>
+			<ion-content>
+				<ion-refresher
+				    pulling-text="下拉刷新"
+				    on-refresh="doRefresh()">
+				  </ion-refresher>
+				<ion-list>
+
+				<ion-item class="item-thumbnail-left" ng-repeat="item in items" ui-sref="home.v2.sjxq({id:item.id})">
+				      <img src="{{item.tp}}">
+				      <h2>{{item.sjmc}}</h2>
+				      <p>￥{{item.qsjg}}起送|{{item.psfs}}</p>
+				      <p>￥{{item.rjjg}}/人</p>
+				    </ion-item>
+				</ion-list>
+
+
+
+
+			</ion-content>
+  		
+		
+
+</ion-view>

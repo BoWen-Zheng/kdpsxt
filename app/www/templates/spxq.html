@@ -1,0 +1,78 @@
+<ion-view view-title="商家名称" hide-tabs="true">
+	<ion-content>
+			<tab-slide-box>
+			    	<div class="tsb-icons">
+			    		<div class="tsb-ic-wrp">
+							<a href="javascript:;" style="text-decoration:none;"><h3 class="positive">商品</h3></a>
+							<a href="javascript:;" style="text-decoration:none;"><h3 class="positive">商家</h3></a>
+							<a href="javascript:;" style="text-decoration:none;"><h3 class="positive">详情</h3></a>
+							<a href="javascript:;" style="text-decoration:none;"><h3 class="positive">评价</h3></a>
+						</div>
+			    	</div>
+			        <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+			            <ion-slide>
+			            	<ion-list ng-repeat="item in items">
+								<ion-item class="item-avatar">
+									<img src="{{item.tp}}" alt="">
+									<div class="row">
+									<h2 class="col-50" style="margin-top:10px">{{item.spmc}}<span style="color:red;margin-top:5px">￥{{item.spjg}}</span></h2>
+									
+									<div class="button-bar col-50" style="text-align:right">
+										<div><a class="button" style="border-radius:50% 50%;display:inline-block" ng-click="updatenum(item.id,-1)">-</a><input style="margin-top:10px;width:30px" ng-model="item.num"/><a class="button" style="border-radius:50% 50%;display:inline-block" ng-click="updatenum(item.id,1)">+</a></div>
+									</div>
+									</div>
+
+								</ion-item>
+			            	</ion-list>
+			            	<div class="bar bar-footer">
+			            		<button class="button icon ion-ios-cart-outline"></button>
+			            		<h4 class="title">总价：<input style="margin-top:10px;width:30px" ng-model="zj"/></h4>
+			            		<button class="button button-assertive" ng-click="putclick()">点击付款</button>
+			            	</div>
+			            </ion-slide>
+			            <ion-slide>
+			                <ion-list>
+			                <ion-item class="item-image"><img src="{{sj.tp}}"></ion-item>
+							<ion-item>
+							商家名称：{{sj.sjmc}}
+							</ion-item>
+							<ion-item>
+							商家地址：{{sj.sjdz}}
+							</ion-item>
+							<ion-item>
+							商家电话：{{sj.sjdh}}
+							</ion-item>
+							</ion-list>
+			            </ion-slide>
+			            <ion-slide>
+			            	<ion-list>
+			                <ion-item>
+							{{sj.xq}}
+							</ion-item>
+							</ion-list>
+			            </ion-slide>
+						<ion-slide>
+						<ion-list>
+							<label class="item item-input">
+		 						<input type="text" placeholder="评价" ng-model="pingjia.pj">
+
+		 					</label>
+		 						<button class="button button-balanced button-block" ng-click="yhsjpj()">提交</button>
+			                </ion-list>
+			                <ion-list>
+			                <ion-item ng-repeat="yhpj in yhpjs">
+			                	
+								 <a class="item item-thumbnail-left">
+							      <img src="{{yhpj.yh.tx}}">
+							      <h2>{{yhpj.yh.yhm}}</h2>
+							      <p>{{yhpj.pj}}</p>
+							    </a>
+							</ion-item>
+							
+							</ion-list>
+			            </ion-slide>
+			        </ion-slide-box>
+            </tab-slide-box>
+	
+	</ion-content>
+</ion-view>
